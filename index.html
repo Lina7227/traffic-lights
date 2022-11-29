@@ -1,143 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .block {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            margin: 100px 0;
-            padding: 0;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Traffic light with countdown for Gefest testing</title>
+        <style>
+            #light-red{
+                height: 100px;
+                width: 100px;
+                border: 10px solid black;
+                background-color: rgb(88, 87, 87);
+                border-radius: 50%;
+            }
+            #light-yellow{
+                height: 100px;
+                width: 100px;
+                border: 10px solid black;
+                background-color: rgb(88, 87, 87);
+                border-radius: 50%;
+            }
+            #light-green{
+                height: 100px;
+                width: 100px;
+                border: 10px solid black;
+                background-color: rgb(88, 87, 87);
+                border-radius: 50%;
+            }
+            #countdown{
+                height: 50px;
+                width: 80px;
+                border: 10px solid black;
+                background-color: grey;
+                color: rgb(255, 255, 255);
+                font-size: 40px;
+                padding: 4px;
+            }
+            #box{
+                height: 450px;
+                width: 130px;
+                border: 10px solid black;
+                background-color: rgb(50, 50, 50);
+            }
+        </style>
+        <script>
 
-        .item {
-            display: flex;
-            justify-content: space-between;
-            margin: 30px auto;
-            padding: 0;
-            max-height: 100px;
-            min-width: 300px;
-        }
+            var i = -1;
+            var clock = 1;
 
-        .item__color {
-            margin: 0 auto 0 0;
-            padding: 0;
-            border-radius: 50px;
-            border: solid 2px #000;
-            height: 50px;
-            width: 50px;
-            background-color: #C0C0C0;
-        }
+            function light(type){
+                var colors = ['red', 'yellow', 'green']
+                const red_light = document.getElementById("light-red");
+                const yellow_light = document.getElementById("light-yellow");
+                const green_light = document.getElementById("light-green");
+                i+=1;
+                    if(i<3){
+                        if(i===0){
+                            red_light.style.backgroundColor = 'red';
+                            yellow_light.style.backgroundColor = 'grey';
+                            green_light.style.backgroundColor = 'grey';
+                            document.getElementById("countdown").style.color = 'red'; 
+                        } else if (i===1) {
+                            red_light.style.backgroundColor = 'gray';
+                            yellow_light.style.backgroundColor = 'yellow';
+                            green_light.style.backgroundColor = 'grey';
+                            document.getElementById("countdown").style.color = 'yellow'; 
+                        } else if(i===2){
+                            red_light.style.backgroundColor = 'gray';
+                            yellow_light.style.backgroundColor = 'gray';
+                            green_light.style.backgroundColor = 'green';
+                            document.getElementById("countdown").style.color = 'green'; 
+                            i = -1;
+                        }
+                    }
+            }
 
-        .item__color_red {
-            background-color: #FF0000;
-        }
 
-        .item__color_yellow {
-            background-color: #FFD700;
-        }
-
-        .item__color_green {
-            background-color: #228B22;
-        }
-
-        .item__timer {
-            margin: 10px 0 0;
-            padding: 0;
-            font-size: 36px;
-        }
-    </style>
-    <script>
-        // function startTimer(duration, display) {
-        //     let timer = duration, minutes, seconds;
-        //     setInterval(function () {
-        //         minutes = parseInt(timer / 60, 10);
-        //         seconds = parseInt(timer % 60, 10);
-
-        //         minutes = minutes < 10 ? "0" + minutes : minutes;
-        //         seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        //         display.textContent = minutes + ":" + seconds;
-
-        //         if (--timer < 0) {
-        //             timer = duration;
-        //         }
-        //     }, 1000);
-        // }
-
-        
-        // window.onload = function () {
-        //     var fiveMinutes = 60 * 2,
-        //         display = document.querySelector('.item__timer_red');
-        //         const tablo = document.querySelector('.item__color');
-        //         tablo.classList.toggle('item__color_red');
-        //     startTimer(fiveMinutes, display, tablo);
-            
-        // };
-
-        function startTimer(duration, display) {
-            let start = Date.now(),
-                diff,
-                minutes,
-                seconds;
-            function timer() {
-                // get the number of seconds that have elapsed since 
-                // startTimer() was called
-                diff = duration - (((Date.now() - start) / 1000) | 0);
-
-                // does the same job as parseInt truncates the float
-                minutes = (diff / 60) | 0;
-                seconds = (diff % 60) | 0;
-
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.textContent = minutes + ":" + seconds; 
-
-                if (diff <= 0) {
-                    // add one second so that the count down starts at the full duration
-                    // example 05:00 not 04:59
-                    start = Date.now() + 1000;
+            function clc(){
+                clock -= 1;
+                if(clock > 0){
+                    document.getElementById("countdown").innerText = clock;
+                } else {
+                    clock = 10;
+                    document.getElementById("countdown").innerText = clock;
+                    light();
                 }
-            };
-            // we don't want to wait a full second before the timer starts
-            timer();
-            setInterval(timer, 1000);
-        }
+            }
 
-        let fiveMinutes; 
-        window.onload = function getTimer() {
-            fiveMinutes = 10 * 1;
+            setInterval(clc, 1000);
+        </script>
+    </head>
 
-            const  display = document.querySelector(".item__timer");
-            const tablo = document.querySelector('.item__color');
-            tablo.classList.toggle("item__color_red");
-            startTimer(fiveMinutes, display, tablo);
-
-            
-        };        
-        
-    </script>
-</head>
-
-<body>
-    <div class="block">
-        <div class="item">
-            <div class="item__color"></div>
-            <span class="item__timer item__timer_red">2</span>
-        </div>
-        <div class="item">
-            <div class="item__color"></div>
-            <span class="item__timer item__timer_yellow">2</span>
-        </div>
-        <div class="item">
-            <div class="item__color"></div>
-            <span class="item__timer item__timer_green">2</span>
-        </div>
-    </div>
-</body>
+    <body>
+        <center>
+            <div>Traffic light for spot-gefest</div>
+            <div id="box">
+                <div id="light-red"></div>
+                <div id="light-yellow"></div>
+                <div id="light-green"></div>
+                <div id="countdown"></div>
+            </div>
+        </center>
+    </body>
 </html>
