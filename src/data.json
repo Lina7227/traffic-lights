@@ -1,0 +1,44 @@
+[
+    {
+        "adress": "adress",
+        "duration": "123",
+        "color": "DWNCNT_GRN",
+        "date": "timestamp"
+    },
+    {
+        "adress": "adress",
+        "duration": "123",
+        "color": "DWNCNT_OFF",
+        "date": "timestamp"
+    },
+    {
+        "adress": "adress",
+        "duration": "123",
+        "color": "DWNCNT_RED",
+        "date": "timestamp"
+    },
+    {
+        "adress": "adress",
+        "duration": "123",
+        "color": "DWNCNT_GRN",
+        "date": "timestamp"
+    },
+    {
+        "adress": "adress",
+        "duration": "123",
+        "color": "DWNCNT_OFF",
+        "date": "timestamp"
+    },
+    {
+        "adress": "adress",
+        "duration": "123",
+        "color": "DWNCNT_RED",
+        "date": "timestamp"
+    },
+    {
+        "adress": "adress",
+        "duration": "123",
+        "color": "DWNCNT_GRN",
+        "date": "timestamp"
+    }
+]

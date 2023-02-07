@@ -1,47 +1,73 @@
 .element {
     margin: 0;
-    padding: 0;
+    padding: 10px;
     list-style-type: none;
-    max-width: 130px;
-    max-height: 420px;
-    min-height: 420px;
+    max-width: 140px;
+    width: 140px;
+    max-height: 570px;
+    min-height: 570px;
     border-radius: 10px;
     background-color: #FFFFFF;
-    position: relative;
-    overflow: hidden;
+    /* position: relative;
+    overflow: hidden; */
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.element__title {
+    font-size: 22px;
+    font-weight: 400;
+    text-align: center;
+    margin: 0 0 10px;
+    padding: 0;
+}
+
+.light {
+    height: 100px;
+    width: 100px;
+    border: 10px solid #000;
+    border-radius: 50%;
 }
 
 .light-red {
-    height: 100px;
-    width: 100px;
-    border: 10px solid black;
-    background-color: rgb(88, 87, 87);
-    border-radius: 50%;
+    background-color: #696969;
+}
+
+.light-red_on {
+    background-color: #FF0000;
 }
 
 .light-yellow {
-    height: 100px;
-    width: 100px;
-    border: 10px solid black;
-    background-color: rgb(88, 87, 87);
-    border-radius: 50%;
+    background-color: #696969;
+}
+
+.light-yellow_on {
+    background-color: #FFFF00;
 }
 
 .light-green {
-    height: 100px;
-    width: 100px;
-    border: 10px solid black;
-    background-color: rgb(88, 87, 87);
-    border-radius: 50%;
+    background-color: #696969;
+}
+
+.light-green_on {
+    background-color: #008000;
 }
 
 .duration {
     height: 80px;
     width: 80px;
-    border: 10px solid black;
-    background-color: grey;
-    color: rgb(255, 255, 255);
-    font-size: 30px;
+    border: 10px solid #000;
+    background-color: #808080;
     padding: 4px;
+    margin: 0 auto;
+}
+
+.duration__text {
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px auto;
+    padding: 0;
 }
